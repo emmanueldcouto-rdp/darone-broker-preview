@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAR ONE — 5 Professional Loader Concepts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --speed: 1.8s; }
+    @keyframes traceLoop {
+      0% { stroke-dashoffset: 360; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(197, 165, 114, 0.5)); }
+      50% { filter: drop-shadow(0 0 18px rgba(197, 165, 114, 0.98)); }
+    }
+    .gold-comet {
+      stroke-dasharray: 95 265;
+      animation: traceLoop var(--speed, 1.8s) linear infinite;
+    }
+    .ivory-comet {
+      stroke-dasharray: 40 320;
+      animation: traceLoop var(--speed, 1.8s) linear infinite;
+      animation-delay: calc(var(--speed, 1.8s) * -0.5);
+    }
+    .glow-wrap {
+      animation: pulseGlow 2.2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#07101E] text-[#F5F2EB] min-h-screen flex items-center justify-center p-6 font-sans">
+  <div class="max-w-3xl w-full bg-[#0A1628] border border-[#C5A572]/40 rounded-2xl p-6 shadow-2xl">
+    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#C5A572]/20">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="px-2.5 py-0.5 rounded text-xs font-extrabold bg-[#C5A572] text-[#0A1628] tracking-wider">DAR ONE</span>
+          <h1 class="text-lg font-bold text-[#F5F2EB]">5 Professional Loader Concepts — Live Comparison</h1>
+        </div>
+        <p class="text-xs text-slate-300 mt-1">Click any of the 5 concepts below to preview how it animates on Sign-In, Sync Bars, and Buttons.</p>
+      </div>
+      <a href="/" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#C5A572]/15 text-[#C5A572] border border-[#C5A572]/40 hover:bg-[#C5A572]/25">← Back to Live App</a>
+    </div>
+
+    <!-- 5 Concept Selector Tabs -->
+    <div class="flex flex-wrap gap-2 mt-4">
+      <button onclick="setConcept('d1')" id="tab-d1" class="px-3 py-2 rounded-lg text-xs font-bold bg-[#C5A572] text-[#0A1628]">
+        1. “D1” Architectural Crest ★
+      </button>
+      <button onclick="setConcept('iso')" id="tab-iso" class="px-3 py-2 rounded-lg text-xs font-semibold bg-[#13233F] text-[#F5F2EB] border border-[#C5A572]/30">
+        2. 3D Property Blueprint
+      </button>
+      <button onclick="setConcept('dubai')" id="tab-dubai" class="px-3 py-2 rounded-lg text-xs font-semibold bg-[#13233F] text-[#F5F2EB] border border-[#C5A572]/30">
+        3. Dubai 8-Point Star
+      </button>
+      <button onclick="setConcept('infinity')" id="tab-infinity" class="px-3 py-2 rounded-lg text-xs font-semibold bg-[#13233F] text-[#F5F2EB] border border-[#C5A572]/30">
+        4. Infinity (∞)
+      </button>
+      <button onclick="setConcept('cursive')" id="tab-cursive" class="px-3 py-2 rounded-lg text-xs font-semibold bg-[#13233F] text-[#F5F2EB] border border-[#C5A572]/30">
+        5. Cursive “D”
+      </button>
+    </div>
+
+    <!-- Context Switcher -->
+    <div class="flex flex-wrap gap-2 mt-3">
+      <button onclick="setContext('overlay')" id="ctx-overlay" class="px-2.5 py-1 rounded text-xs font-bold bg-[#C5A572]/20 text-[#C5A572] border border-[#C5A572]">Context 1: Auth / Sync Modal</button>
+      <button onclick="setContext('banner')" id="ctx-banner" class="px-2.5 py-1 rounded text-xs font-semibold bg-[#13233F] text-slate-300">Context 2: Top Sync Bar</button>
+      <button onclick="setContext('button')" id="ctx-button" class="px-2.5 py-1 rounded text-xs font-semibold bg-[#13233F] text-slate-300">Context 3: Action Buttons</button>
+    </div>
+
+    <!-- Preview Stage -->
+    <div class="mt-4 rounded-xl bg-[#060E1A] border border-[#C5A572]/30 p-8 flex flex-col items-center justify-center min-h-[260px]">
+      <div id="view-overlay" class="flex flex-col items-center text-center">
+        <div class="glow-wrap mb-4">
+          <div class="w-28 h-28 rounded-2xl border border-[#C5A572]/20 bg-[#13233F]/45 flex items-center justify-center shadow-inner">
+            <svg width="96" height="96" viewBox="0 0 120 120" fill="none">
+              <defs>
+                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F7E5C0" />
+                  <stop offset="55%" stop-color="#C5A572" />
+                  <stop offset="100%" stop-color="#8C6B3B" stop-opacity="0.4" />
+                </linearGradient>
+              </defs>
+              <path class="shape-path" stroke="#C5A572" stroke-opacity="0.18" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pathLength="360" />
+              <path class="shape-path gold-comet" stroke="url(#goldGrad)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pathLength="360" />
+              <path class="shape-path ivory-comet" stroke="#F5F2EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="360" />
+            </svg>
+          </div>
+        </div>
+        <div id="concept-label" class="text-[#F5F2EB] font-bold text-base"></div>
+        <div id="concept-desc" class="text-[#C5A572] text-xs mt-1"></div>
+      </div>
+
+      <div id="view-banner" class="hidden w-full max-w-lg flex flex-col gap-3">
+        <div class="bg-[#13233F] border border-[#C5A572]/40 rounded-xl px-4 py-3 flex items-center justify-between">
+          <div class="flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-[#0A1628] border border-[#C5A572]/30 flex items-center justify-center">
+              <svg width="32" height="32" viewBox="0 0 120 120" fill="none">
+                <path class="shape-path" stroke="#C5A572" stroke-opacity="0.22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" pathLength="360"/>
+                <path class="shape-path gold-comet" stroke="#C5A572" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" pathLength="360"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-[#F5F2EB] text-sm font-bold">Syncing Leads &amp; Common Pool…</div>
+              <div class="text-[#C5A572] text-xs">Fetching authoritative SLA deadlines from server</div>
+            </div>
+          </div>
+          <span class="px-2.5 py-0.5 rounded text-xs font-bold bg-[#C5A572]/20 text-[#C5A572]">LIVE</span>
+        </div>
+      </div>
+
+      <div id="view-button" class="hidden flex flex-wrap items-center justify-center gap-4">
+        <button class="px-5 py-3 rounded-xl bg-[#C5A572] text-[#0A1628] font-bold text-sm flex items-center gap-3 shadow-lg">
+          <svg width="24" height="24" viewBox="0 0 120 120" fill="none">
+            <path class="shape-path" stroke="#0A1628" stroke-opacity="0.22" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" pathLength="360"/>
+            <path class="shape-path gold-comet" stroke="#0A1628" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" pathLength="360"/>
+          </svg>
+          <span>Signing In to Server…</span>
+        </button>
+
+        <button class="px-5 py-3 rounded-xl bg-[#13233F] border border-[#C5A572] text-[#F5F2EB] font-bold text-sm flex items-center gap-3 shadow-lg">
+          <svg width="24" height="24" viewBox="0 0 120 120" fill="none">
+            <path class="shape-path" stroke="#C5A572" stroke-opacity="0.22" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" pathLength="360"/>
+            <path class="shape-path gold-comet" stroke="#C5A572" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" pathLength="360"/>
+          </svg>
+          <span>Claiming Lead…</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const concepts = {
+      d1: {
+        path: "M 32 28 L 46 20 L 46 100 L 34 100 L 58 100 L 46 100 L 46 20 L 66 20 C 94 20, 104 38, 104 60 C 104 82, 94 100, 66 100 L 46 100 Z",
+        title: "1. Architectural “D1” Monogram — Precision & Brand Authority (Top Pick)",
+        desc: "Fuses the 'D' of DAR and the '1' of ONE into a sharp Dubai real-estate developer emblem."
+      },
+      iso: {
+        path: "M 60 16 L 100 39 L 100 85 L 60 108 L 20 85 L 20 39 L 60 16 L 60 62 L 100 39 M 60 62 L 20 39 M 60 62 L 60 108",
+        title: "2. 3D Isometric Property Blueprint — Industrial & Commercial Asset Icon",
+        desc: "A continuous architectural wireframe cube representing warehouses, plots & commercial assets."
+      },
+      dubai: {
+        path: "M 60 14 L 74 32 L 96 32 L 96 54 L 112 68 L 96 82 L 96 102 L 74 102 L 60 116 L 46 102 L 24 102 L 24 82 L 8 68 L 24 54 L 24 32 L 46 32 Z",
+        title: "3. Dubai 8-Point Geometric Crest — Prestige & Regional Heritage",
+        desc: "Inspired by DIFC & Burj Khalifa geometry; symmetrical and unmistakable at any size."
+      },
+      infinity: {
+        path: "M 60 60 C 42 30, 14 30, 14 60 C 14 90, 42 90, 60 60 C 78 30, 106 30, 106 60 C 106 90, 78 90, 60 60 Z",
+        title: "4. Infinity (∞) Gold Comet — Continuous Live Server Sync",
+        desc: "Clean, universal enterprise indicator for real-time backend synchronization."
+      },
+      cursive: {
+        path: "M 56 22 C 49 50, 41 78, 34 94 C 29 104, 17 101, 20 90 C 23 79, 39 81, 55 91 C 76 103, 104 91, 106 61 C 108 31, 82 14, 54 18 C 35 21, 27 34, 36 42 C 44 49, 59 38, 56 22 Z",
+        title: "5. Calligraphic Cursive “D” — Bespoke Signature Flourish",
+        desc: "Flowing handwritten monogram loop in Muted Gold & Warm Ivory."
+      }
+    };
+
+    function setConcept(key) {
+      const c = concepts[key];
+      document.querySelectorAll('.shape-path').forEach(el => el.setAttribute('d', c.path));
+      document.getElementById('concept-label').textContent = c.title;
+      document.getElementById('concept-desc').textContent = c.desc;
+      ['d1', 'iso', 'dubai', 'infinity', 'cursive'].forEach(k => {
+        const btn = document.getElementById('tab-' + k);
+        btn.className = (k === key)
+          ? 'px-3 py-2 rounded-lg text-xs font-bold bg-[#C5A572] text-[#0A1628]'
+          : 'px-3 py-2 rounded-lg text-xs font-semibold bg-[#13233F] text-[#F5F2EB] border border-[#C5A572]/30';
+      });
+    }
+
+    function setContext(ctx) {
+      ['overlay', 'banner', 'button'].forEach(k => {
+        document.getElementById('view-' + k).classList.toggle('hidden', k !== ctx);
+        const btn = document.getElementById('ctx-' + k);
+        btn.className = (k === ctx)
+          ? 'px-2.5 py-1 rounded text-xs font-bold bg-[#C5A572]/20 text-[#C5A572] border border-[#C5A572]'
+          : 'px-2.5 py-1 rounded text-xs font-semibold bg-[#13233F] text-slate-300';
+      });
+    }
+
+    setConcept('d1');
+  </script>
+</body>
+</html>
