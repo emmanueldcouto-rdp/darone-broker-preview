@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <base href="/darone-broker-preview/">
@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="description" content="DAR ONE Dubai Industrial Real Estate Broker & CRM App (v2)">
+  <meta name="description" content="DAR ONE Dubai Industrial Real Estate Broker & CRM App">
   <meta name="theme-color" content="#0B192C">
 
   <!-- iOS & Android Standalone App meta tags -->
@@ -19,7 +19,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>DAR ONE â€” Industrial Broker</title>
+  <title>DAR ONE — Industrial Broker</title>
   <link rel="manifest" href="manifest.json">
   <style>
     html, body {
@@ -29,227 +29,8 @@
       overscroll-behavior: none;
     }
   </style>
-  <script>
-    // GitHub Pages Remote iPhone & Android Preview Adapter:
-    // Active ONLY when hosted on *.github.io so remote iPhone (Safari / PWA)
-    // and Android users can sign in and test all v2 features without local LAN access.
-    (function() {
-      if (window.location.hostname.indexOf('github.io') === -1) return;
-
-      var OrigXHR = window.XMLHttpRequest;
-      function resolvePreviewRole(email) {
-        var e = (email || '').toLowerCase();
-        if (e.indexOf('tl') !== -1 || e.indexOf('lead') !== -1) return ['team_leader'];
-        if (e.indexOf('manager') !== -1 || e.indexOf('branch') !== -1) return ['branch_manager'];
-        if (e.indexOf('agent') !== -1 || e.indexOf('broker') !== -1) return ['agent'];
-        if (e.indexOf('market') !== -1) return ['marketing'];
-        if (e.indexOf('account') !== -1 || e.indexOf('finance') !== -1) return ['accounts'];
-        return ['admin'];
-      }
-      function resolvePreviewName(email) {
-        var e = (email || '').toLowerCase();
-        if (e.indexOf('sultan') !== -1) return 'Sultan';
-        if (e.indexOf('tl') !== -1) return 'Tariq Al Mansoori (Team Lead)';
-        if (e.indexOf('manager') !== -1) return 'Khalid Al Maktoum (Branch Mgr)';
-        if (e.indexOf('agent') !== -1) return 'Omar Al Rashidi (Broker)';
-        var prefix = (email || 'Sultan').split('@')[0];
-        return prefix.charAt(0).toUpperCase() + prefix.slice(1);
-      }
-
-      var previewLeads = [
-        {
-          id: "LD-9041",
-          reference_code: "DAR-LD-2026-091",
-          status: "qualified",
-          source_channel: "whatsapp_direct",
-          interest_type: "lease",
-          property_category: "warehouse",
-          preferred_zones: ["JAFZA South", "DIP 1"],
-          contact: { full_name: "Al Futtaim Logistics Hub", company_name: "Al Futtaim Industrial", phone: "+971504829104", email: "leasing@alfuttaim-ind.ae", is_masked: false },
-          qualification: { business_use: "Cold Chain & 3PL Distribution", size_min_sqft: 35000, size_max_sqft: 50000, budget_min_aed: 1400000, budget_max_aed: 1850000, needed_by: "2026-11-15", notes: "Requires 800 kW connected load, 11m eaves, 4 dock levelers." },
-          assigned_to: { id: "USR-01", full_name: "Sultan", role: "admin" },
-          sla_due_at: new Date(Date.now() + 55 * 60000).toISOString(),
-          sla_breached: false,
-          created_at: new Date(Date.now() - 3600000).toISOString(),
-          updated_at: new Date().toISOString()
-        },
-        {
-          id: "LD-9042",
-          reference_code: "DAR-LD-2026-092",
-          status: "new",
-          source_channel: "website_intake",
-          interest_type: "buy",
-          property_category: "industrial_plot",
-          preferred_zones: ["Dubai Industrial City (DIC)", "National Industries Park"],
-          contact: { full_name: "Emirates Precision Metals LLC", company_name: "EPM Group", phone: "+971529103844", email: "ops@epmgroup.ae", is_masked: false },
-          qualification: { business_use: "Heavy Steel Fabrication & CNC", size_min_sqft: 80000, size_max_sqft: 120000, budget_min_aed: 12000000, budget_max_aed: 16500000, needed_by: "2026-12-01", notes: "Needs 1,500 kW DEWA load + overhead crane provision." },
-          assigned_to: { id: "USR-01", full_name: "Sultan", role: "admin" },
-          sla_due_at: new Date(Date.now() + 85 * 60000).toISOString(),
-          sla_breached: false,
-          created_at: new Date(Date.now() - 7200000).toISOString(),
-          updated_at: new Date().toISOString()
-        }
-      ];
-
-      var previewPool = [
-        {
-          id: "LD-POOL-301",
-          reference_code: "DAR-POOL-2026-301",
-          status: "in_pool",
-          source_channel: "portal_propertyfinder",
-          interest_type: "lease",
-          property_category: "warehouse",
-          preferred_zones: ["Al Quoz Industrial 3", "Ras Al Khor"],
-          contact: { full_name: "Gulf Medical Supplies FZCO", company_name: "GMS Healthcare", phone: "+97155â€¢â€¢â€¢â€¢â€¢89", email: "pâ€¢â€¢â€¢@gmshealth.ae", is_masked: true },
-          qualification: { business_use: "MOH Approved Pharma Storage", size_min_sqft: 18000, size_max_sqft: 25000, budget_min_aed: 850000, budget_max_aed: 1100000, needed_by: "2026-11-20", notes: "Temperature controlled +2C to +25C." },
-          pool_reason: "sla_expired",
-          entered_pool_at: new Date(Date.now() - 1800000).toISOString(),
-          created_at: new Date(Date.now() - 14400000).toISOString()
-        }
-      ];
-
-      var previewSubmissions = [
-        {
-          id: "SUB-401",
-          reference_code: "DAR-SUB-2026-401",
-          status: "pending_review",
-          submission_source: "broker_field_intake",
-          transaction_type: "lease",
-          property_category: "warehouse",
-          industrial_zone: "JAFZA North",
-          title: "Grade-A High-Bay Logistics Facility (42,000 sq.ft)",
-          total_area_sqft: 42000,
-          built_up_area_sqft: 38500,
-          power_load_kw: 650,
-          eaves_height_m: 11.5,
-          asking_price_aed: 1680000,
-          owner_contact: { full_name: "Saeed Bin Touq Investments", phone: "+971503319920", email: "assets@bintouq.ae" },
-          submitted_by: { id: "USR-01", full_name: "Sultan", role: "admin" },
-          created_at: new Date(Date.now() - 5400000).toISOString()
-        }
-      ];
-
-      var previewRequirements = [
-        {
-          id: "REQ-701",
-          reference_code: "DAR-REQ-2026-701",
-          status: "approved",
-          urgency: "urgent",
-          interest_type: "lease",
-          property_category: "warehouse",
-          preferred_zones: ["DIP 2", "JAFZA South"],
-          title: "Urgent 30,000â€“45,000 sq.ft Food Grade Warehouse with 600 kW",
-          size_min_sqft: 30000,
-          size_max_sqft: 45000,
-          budget_max_aed: 1600000,
-          min_power_kw: 600,
-          commission_split_offer: "50% / 50% Direct Split",
-          notes: "Client ready to sign LOI this week upon DCD civil defense verification.",
-          posted_by: { id: "USR-01", full_name: "Sultan", role: "admin" },
-          responses_count: 1,
-          responses: [],
-          created_at: new Date(Date.now() - 3600000).toISOString()
-        }
-      ];
-
-      window.XMLHttpRequest = function() {
-        var xhr = new OrigXHR();
-        var method = 'GET';
-        var url = '';
-        var origOpen = xhr.open;
-        var origSend = xhr.send;
-
-        xhr.open = function(m, u) {
-          method = (m || 'GET').toUpperCase();
-          url = String(u || '');
-          return origOpen.apply(xhr, arguments);
-        };
-
-        xhr.send = function(body) {
-          if (url.indexOf('/api/') !== -1) {
-            var parsed = {};
-            try { if (body) parsed = JSON.parse(body); } catch (e) {}
-
-            var status = 200;
-            var respObj = { status: 'ok' };
-
-            if (url.indexOf('/api/auth/mobile/login') !== -1) {
-              var email = parsed.email || 'sultan@darone.ae';
-              respObj = {
-                access: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.darone_v2_preview_jwt_token_active',
-                refresh: 'darone_v2_preview_refresh_token',
-                user: {
-                  id: 'USR-01',
-                  full_name: resolvePreviewName(email),
-                  email: email,
-                  rera_brn: 'BRN-58210',
-                  licence_expiry_date: '2027-06-30',
-                  team: { id: 'TM-01', name: 'JAFZA & DIP Industrial Team' },
-                  roles: resolvePreviewRole(email),
-                  mfa_required: false
-                }
-              };
-            } else if (url.indexOf('/api/auth/mobile/signup') !== -1) {
-              status = 201;
-              respObj = { detail: 'Account created. An admin must approve it before you can log in.' };
-            } else if (url.indexOf('/api/auth/mobile/refresh') !== -1) {
-              respObj = {
-                access: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.darone_v2_preview_jwt_rotated',
-                refresh: 'darone_v2_preview_refresh_token'
-              };
-            } else if (url.indexOf('/api/auth/mobile/me') !== -1) {
-              respObj = {
-                id: 'USR-01',
-                full_name: 'Sultan',
-                email: 'sultan@darone.ae',
-                rera_brn: 'BRN-58210',
-                licence_expiry_date: '2027-06-30',
-                team: { id: 'TM-01', name: 'JAFZA & DIP Industrial Team' },
-                roles: ['admin']
-              };
-            } else if (url.indexOf('/api/leads/pool/') !== -1 && url.indexOf('/claim') !== -1) {
-              respObj = previewLeads[0];
-            } else if (url.indexOf('/api/leads/pool') !== -1) {
-              respObj = { results: previewPool, count: previewPool.length };
-            } else if (url.indexOf('/api/leads') !== -1 && method === 'POST') {
-              status = 201;
-              respObj = previewLeads[0];
-            } else if (url.indexOf('/api/leads') !== -1) {
-              respObj = { results: previewLeads, count: previewLeads.length };
-            } else if (url.indexOf('/api/property-submissions') !== -1) {
-              respObj = { results: previewSubmissions, count: previewSubmissions.length };
-            } else if (url.indexOf('/api/requirements-board') !== -1) {
-              respObj = { results: previewRequirements, count: previewRequirements.length };
-            }
-
-            setTimeout(function() {
-              var text = JSON.stringify(respObj);
-              Object.defineProperty(xhr, 'readyState', { value: 4, configurable: true });
-              Object.defineProperty(xhr, 'status', { value: status, configurable: true });
-              Object.defineProperty(xhr, 'statusText', { value: 'OK', configurable: true });
-              Object.defineProperty(xhr, 'responseText', { value: text, configurable: true });
-              Object.defineProperty(xhr, 'response', { value: text, configurable: true });
-              xhr.getAllResponseHeaders = function() { return 'content-type: application/json\r\n'; };
-              xhr.getResponseHeader = function(h) {
-                return (h || '').toLowerCase() === 'content-type' ? 'application/json' : null;
-              };
-              if (typeof xhr.onreadystatechange === 'function') xhr.onreadystatechange();
-              if (typeof xhr.onload === 'function') xhr.onload();
-              xhr.dispatchEvent(new Event('readystatechange'));
-              xhr.dispatchEvent(new Event('load'));
-              xhr.dispatchEvent(new Event('loadend'));
-            }, 120);
-            return;
-          }
-          return origSend.apply(xhr, arguments);
-        };
-        return xhr;
-      };
-    })();
-  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
-
